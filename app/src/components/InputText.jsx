@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap';
 
 const InputText = React.forwardRef(({
   label,
+  type = 'text',
   name,
   onChange,
   onBlur,
@@ -13,14 +14,16 @@ const InputText = React.forwardRef(({
   <Form.Group controlId="validationCustom01">
     <Form.Label>{label}</Form.Label>
     <Form.Control
+      ref={ref}
       name={name}
       onChange={onChange}
       onBlur={onBlur}
-      type="text"
+      type={type}
       autoComplete={autoComplete.toString()}
       placeholder={placeholder}
+      accept={type === 'file' ? "image/png, image/jpeg":'false'}
     />
-    {error && <Form.Control.Feedback>{error}</Form.Control.Feedback>}
+    {error && <Form.Control.Feedback>{error.message}</Form.Control.Feedback>}
   </Form.Group>
 )
 );
