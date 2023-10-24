@@ -1,11 +1,13 @@
 const fs = require('fs');
 
 exports.deleteFiles = (req, res, next) => {
-  const { path } = req.file;
+  const imagenes = req.files;
 
   try {
-    fs.rmSync(path);
+    imagenes.forEach(({ path }) => {
+      fs.rmSync(path);
+    });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 }

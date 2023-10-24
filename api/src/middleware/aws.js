@@ -3,10 +3,13 @@ const fs = require('fs');
 
 const s3 = new AWS.S3();
 
-exports.aws_upload = async (req, res, next) => {
+const arrayImagesAWS = (data) => {
 
-  try {
-    const { filename, path } = req.file;
+  const files = [];
+
+  data.forEach(file => {
+
+    const { path, filename } = file;
 
     const fileStream = fs.createReadStream(path);
 
@@ -16,9 +19,21 @@ exports.aws_upload = async (req, res, next) => {
       Body: fileStream
     };
 
-    const aws = await s3.upload(params).promise();
+    files.push(s3.upload(params).promise());
+  });
+  return Promise.all(files);
 
-    req.aws = aws;
+}
+
+exports.aws_upload = async (req, res, next) => {
+
+  try {
+    const imagenes = req.files;
+
+    const response = await arrayImagesAWS(imagenes);
+    const keys = response.map(data => data.Key);
+
+    req.aws = [...keys];
     next();
 
   } catch (error) {

@@ -11,12 +11,10 @@ const pool = mysql.createPool({
 exports.querySQL = async (query, data = []) => {
   return new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
-      if (err) console.log(err);
+      if (err) reject(err);
 
       connection.query(query, data, (error, results, fields) => {
-        if (error) console.log(error);
-
-        console.log(results);
+        if (error) reject(error);
         resolve(results);
         connection.release();
         if (error) reject(error);
@@ -24,5 +22,3 @@ exports.querySQL = async (query, data = []) => {
     });
   });
 };
-// 3226780958
-// 3180790707

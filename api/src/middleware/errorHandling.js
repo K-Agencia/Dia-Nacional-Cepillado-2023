@@ -2,6 +2,7 @@ const axios = require("axios");
 
 exports.errorHandling = (err, req, res, next) => {
 
+  console.log(err);
   axios.post('https://servidordeerrores.kagencia.com/reporte-error', {
     nombre: "Día Nacional del Cepillado 2023",
     error: err.message,
