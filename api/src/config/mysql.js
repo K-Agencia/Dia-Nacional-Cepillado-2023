@@ -8,12 +8,14 @@ const pool = mysql.createPool({
   database: process.env.BD_NAME,
 });
 
-exports.querySQL = async (query, data = []) => {
+exports.querySQL = async (sentencia, data = []) => {
   return new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
-      if (err) reject(err);
+      if (err) {
+        console.log({err: err});
+        reject(err);}
 
-      connection.query(query, data, (error, results, fields) => {
+      connection.query(sentencia, data, (error, results, fields) => {
         if (error) reject(error);
         resolve(results);
         connection.release();

@@ -57,7 +57,7 @@ const Home = () => {
     })
       .then(({ data }) => {
         setPage(newPage);
-        setInstituciones(instituciones.concat(data));
+        setInstituciones(data);
       })
       .catch((err) => {
         toast.error(err.response.data);
@@ -90,6 +90,8 @@ const Home = () => {
             columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}
           >
             <Masonry gutter='20px'>
+
+
               {instituciones.map((institucion, index) => (
                 <CardImagen key={index} data={institucion} handleShow={handleShow} />
               ))}

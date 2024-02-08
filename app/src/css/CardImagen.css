@@ -1,0 +1,33 @@
+.card-title, .title-modal {
+  color: #20bbb3 !important;
+}
+
+.button-icon {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #d2010d;
+  border: 0.5px solid #d2010d;
+  border-radius: 100%;
+  position: absolute;
+  right: 1px;
+  z-index: 10;
+  cursor: pointer;
+  transition: 50ms;
+}
+
+.button-icon:hover{
+  transform: scale(1.1);
+  background: #d2010d;
+  color: #fff;
+}
+
+@media only screen and (max-width: 480px) {
+  .button-icon {
+    display: none;
+  }
+}

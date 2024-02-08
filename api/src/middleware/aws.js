@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 const fs = require('fs');
+const path = require('path');
 
 const s3 = new AWS.S3();
 
@@ -59,3 +60,6 @@ exports.aws_getFile = async (req, res, next) => {
     next(err);
   }
 }
+
+
+
