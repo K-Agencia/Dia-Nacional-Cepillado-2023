@@ -1,0 +1,17 @@
+.Inscripciones {
+  min-height: 100vh;
+  background: url('../img/fondo.jpg');
+  background-size: 100% auto;
+}
+
+
+.Inscripciones .logo{
+  width: 100%;
+}
+
+@media only screen and (max-width: 480px) {
+  .Inscripciones .logo{
+    width: 50%;
+    margin: auto 0;
+  }
+}

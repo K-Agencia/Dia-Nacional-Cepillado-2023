@@ -1,0 +1,16 @@
+.Home {
+  min-height: 100vh;
+  background: #d3010e;
+  background-image: url('../img/fondo.jpg');
+  background-size: 100% auto;
+}
+
+.logo {
+  width: 20%;
+}
+
+@media only screen and (max-width: 480px) {
+  .logo {
+    width: 50%;
+  }
+}
